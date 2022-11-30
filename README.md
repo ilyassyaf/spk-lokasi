@@ -17,3 +17,9 @@ $ php artisan db:seed
 ```console
 $ php artisan serve
 ```
+
+# Sign In 
+```console
+email: admin@gmail.com
+password: admin123
+```
