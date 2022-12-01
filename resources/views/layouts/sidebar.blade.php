@@ -2,7 +2,7 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="{{asset("assets/images/logo-icon.png")}}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <a href="{{ url('/') }}" class="logo-text">{{ config('app.name', 'Laravel') }}</a>
@@ -19,12 +19,12 @@
                 <div class="menu-title">Kriteria</div>
             </a>
         <ul>
-            <li> <a href="index.html"><i class="bi bi-arrow-right-short"></i>Daftar Kriteria</a></li>
-            <li> <a href="index2.html"><i class="bi bi-arrow-right-short"></i>Nilai Kriteria</a></li>
+            <li> <a href="{{url("/kriteria")}}"><i class="bi bi-arrow-right-short"></i>Daftar Kriteria</a></li>
+            <li> <a href="{{url("/kriteria/nilai")}}"><i class="bi bi-arrow-right-short"></i>Nilai Kriteria</a></li>
         </ul>
         </li>
         <li>
-            <a href="pages-user-profile.html">
+            <a href="{{url("/alternatif")}}">
                 <div class="parent-icon"><i class="bx bx-user"></i>
                 </div>
                 <div class="menu-title">Alternatif</div>
@@ -32,7 +32,7 @@
         </li>
         </li>
         <li>
-            <a href="pages-user-profile.html">
+            <a href="{{url("/perhitungan")}}">
                 <div class="parent-icon"><i class="bx bx-calculator"></i>
                 </div>
                 <div class="menu-title">Perhitungan</div>
@@ -40,7 +40,7 @@
         </li>
         </li>
         <li>
-            <a href="pages-user-profile.html">
+            <a href="{{url("/password")}}">
                 <div class="parent-icon"><i class="bx bx-lock"></i>
                 </div>
                 <div class="menu-title">Password</div>
