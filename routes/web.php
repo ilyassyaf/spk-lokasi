@@ -22,4 +22,10 @@ Route::prefix("/kriteria")->group(function () {
     Route::get("/", [App\Http\Controllers\KriteriaController::class, 'index'])->name("kriteria");
     Route::get("/tambah", [App\Http\Controllers\KriteriaController::class, 'tambah'])->name("kriteria-tambah");
     Route::get("/nilai", [App\Http\Controllers\KriteriaController::class, 'nilai'])->name("nilai-kriteria");
+    Route::get("/nilai/tambah", [App\Http\Controllers\KriteriaController::class, 'tambahNilai'])->name("tambah-nilai-kriteria");
+});
+
+Route::prefix("/alternatif")->group(function () {
+    Route::get("/", [App\Http\Controllers\AlternatifController::class, 'index'])->name("alternatif");
+    Route::get("/tambah", [App\Http\Controllers\AlternatifController::class, 'tambah'])->name("alternatif-tambah");
 });
