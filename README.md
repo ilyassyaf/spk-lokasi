@@ -1,24 +1,29 @@
 ## SPK Pemilihan Lokasi menggunakan metode MFEP
 
-# Install Dependency
+# 1) Setup Project
+- copy .env.example => .env
+- create database
+- edit .env => set DB_DATABASE, DB_USERNAME, DB_PASSWORD
+
+# 2) Install Dependency
 ```console
 $ composer install
 $ npm install
 ```
 
-# Database Migration
+# 3) Database Migration
 ```console
 $ php artisan key:generate
 $ php artisan migrate
 $ php artisan db:seed
 ```
 
-# Start Server
+# 4) Start Server
 ```console
 $ php artisan serve
 ```
 
-# Sign In 
+# 5) Sign In 
 ```console
 email: admin@gmail.com
 password: admin123
