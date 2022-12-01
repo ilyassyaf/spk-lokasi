@@ -17,7 +17,7 @@
   <!-- loader-->
 	<link href="{{asset("assets/css/pace.min.css")}}" rel="stylesheet" />
 
-  <title>Skodash - Bootstrap 5 Admin Template</title>
+  <title>{{ config('app.name', 'Laravel') }} - Sign In</title>
 </head>
 
 <body>
