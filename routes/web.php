@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix("/kriteria")->group(function () {
+    Route::get("/", [App\Http\Controllers\KriteriaController::class, 'index'])->name("kriteria");
+    Route::get("/tambah", [App\Http\Controllers\KriteriaController::class, 'tambah'])->name("kriteria-tambah");
+    Route::get("/nilai", [App\Http\Controllers\KriteriaController::class, 'nilai'])->name("nilai-kriteria");
+});
