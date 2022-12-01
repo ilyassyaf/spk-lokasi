@@ -16,6 +16,8 @@
     <link href="{{asset("assets/plugins/metismenu/css/metisMenu.min.css")}}" rel="stylesheet" />
     <link href="{{asset("assets/plugins/vectormap/jquery-jvectormap-2.0.2.css")}}" rel="stylesheet" />
     <link href="{{asset("assets/plugins/datatable/css/dataTables.bootstrap5.min.css")}}" rel="stylesheet" />
+    <link href="{{asset("assets/plugins/select2/css/select2.min.css")}}" rel="stylesheet" />
+    <link href="{{asset("assets/plugins/select2/css/select2-bootstrap4.css")}}" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="{{asset("assets/css/bootstrap.min.css")}}" rel="stylesheet" />
     <link href="{{asset("assets/css/bootstrap-extended.css")}}" rel="stylesheet" />
@@ -133,6 +135,7 @@
     <script src="{{asset("assets/plugins/apexcharts-bundle/js/apexcharts.min.js")}}"></script>
     <script src="{{asset("assets/plugins/datatable/js/jquery.dataTables.min.js")}}"></script>
     <script src="{{asset("assets/plugins/datatable/js/dataTables.bootstrap5.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/select2/js/select2.min.js")}}"></script>
     <!--app-->
     <script src="{{asset("assets/js/app.js")}}"></script>
     
