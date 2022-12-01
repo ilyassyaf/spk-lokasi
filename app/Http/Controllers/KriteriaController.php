@@ -31,6 +31,16 @@ class KriteriaController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function tambah()
+    {
+        return view('kriteria\tambah');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function nilai()
     {
         return view('kriteria\nilai');
@@ -41,8 +51,8 @@ class KriteriaController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function tambah()
+    public function tambahNilai()
     {
-        return view('kriteria\tambah');
+        return view('kriteria\tambah-nilai');
     }
 }
