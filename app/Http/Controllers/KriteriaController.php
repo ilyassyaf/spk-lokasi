@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\KriteriaDataTable;
+use App\Http\Requests\KriteriaRequest;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
 
 class KriteriaController extends Controller
@@ -21,9 +24,9 @@ class KriteriaController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(KriteriaDataTable $dataTable)
     {
-        return view('kriteria\index');
+        return $dataTable->render('kriteria.index');
     }
 
     /**
@@ -36,23 +39,41 @@ class KriteriaController extends Controller
         return view('kriteria\tambah');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function nilai()
+    public function simpan(KriteriaRequest $request)
     {
-        return view('kriteria\nilai');
+        $data = $request->validated();
+        $model = new Kriteria($data);
+        try {
+            $model->save();
+            return redirect('kriteria');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function tambahNilai()
+    public function edit($id)
     {
-        return view('kriteria\tambah-nilai');
+        $kriteria = Kriteria::find($id);
+        return view('kriteria\edit', compact('kriteria'));
+    }
+
+    public function update($id, KriteriaRequest $request)
+    {
+        $data = $request->validated();
+        $model = Kriteria::find($id);
+        $model->fill($data);
+        try {
+            $model->save();
+            return redirect('kriteria');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function hapus($id)
+    {
+        $kriteria = Kriteria::find($id);
+        $kriteria->delete();
+        return redirect('kriteria');
     }
 }
