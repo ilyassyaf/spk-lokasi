@@ -35,4 +35,8 @@ class AlternatifController extends Controller
     {
         return view('alternatif\tambah');
     }
+
+    public function save(Request $request) {
+        dd($request->all());
+    }
 }
