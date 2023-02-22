@@ -11,4 +11,8 @@ class Kriteria extends Model
 
     protected $table = 'kriteria';
     protected $guarded = [];
+
+    public function nilai() {
+        return $this->hasMany(NilaiKriteria::class, "id_kriteria");
+    }
 }
