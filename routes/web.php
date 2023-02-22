@@ -30,9 +30,14 @@ Route::prefix("/kriteria")->group(function () {
     // Nilai Kriteria
     Route::get("/nilai", [App\Http\Controllers\NilaiKriteriaController::class, 'index'])->name("nilai-kriteria");
     Route::get("/nilai/create", [App\Http\Controllers\NilaiKriteriaController::class, 'tambah'])->name("tambah-nilai-kriteria");
+    Route::get("/nilai/edit/{id}", [App\Http\Controllers\NilaiKriteriaController::class, 'edit'])->name("edit-nilai-kriteria");
+    Route::post("/nilai/save", [App\Http\Controllers\NilaiKriteriaController::class, 'simpan'])->name("simpan-nilai-kriteria");
+    Route::post("/nilai/update/{id}", [App\Http\Controllers\NilaiKriteriaController::class, 'update'])->name("update-nilai-kriteria");
+    Route::get("/nilai/delete/{id}", [App\Http\Controllers\NilaiKriteriaController::class, 'hapus'])->name("hapus-nilai-kriteria");
 });
 
 Route::prefix("/alternatif")->group(function () {
     Route::get("/", [App\Http\Controllers\AlternatifController::class, 'index'])->name("alternatif");
     Route::get("/create", [App\Http\Controllers\AlternatifController::class, 'tambah'])->name("alternatif-tambah");
+    Route::post("/save", [App\Http\Controllers\AlternatifController::class, 'save'])->name("alternatif-simpan");
 });

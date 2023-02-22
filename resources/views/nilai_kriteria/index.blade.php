@@ -19,110 +19,38 @@
     <div class="card radius-10">
         <div class="card-header bg-transparent">
             <div class="col-3">
-                <select class="single-select">
-                    <option >Pilih Kriteria</option>
-                    <option value="Kepadatan Penduduk">Kepadatan Penduduk</option>
+                <select id="select_kriteria" class="single-select">
+                    <option selected disabled>-- Pilih Kriteria --</option>
+                    @foreach ($kriteria as $item)
+                        <option value="{{$item['id']}}">{{$item['nama']}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="card-body">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Kriteria</th>
-                        <th>Label</th>
-                        <th>Nilai</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kepadatan Penduduk</td>
-                        <td>< 100</td>
-                        <td>2</td>
-                        <td>
-                            <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Views"><i class="bi bi-eye-fill"></i></a>
-                                <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="bi bi-trash-fill"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kepadatan Penduduk</td>
-                        <td>< 500</td>
-                        <td>4</td>
-                        <td>
-                            <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Views"><i class="bi bi-eye-fill"></i></a>
-                                <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="bi bi-trash-fill"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Kepadatan Penduduk</td>
-                        <td>< 1000</td>
-                        <td>6</td>
-                        <td>
-                            <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Views"><i class="bi bi-eye-fill"></i></a>
-                                <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="bi bi-trash-fill"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Kepadatan Penduduk</td>
-                        <td>>= 1000</td>
-                        <td>8</td>
-                        <td>
-                            <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Views"><i class="bi bi-eye-fill"></i></a>
-                                <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="bi bi-trash-fill"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            {{ $dataTable->table() }}
         </div>
     </div>
 @endsection
 
 @section('script')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
     <script>
         $(function() {
             "use strict";
-
-            $(document).ready(function() {
-                var table = $('#example').DataTable( {
-                    lengthChange: false,
-                    buttons: [ 
-                        {
-                            text: 'Tambah',
-                            action: function ( e, dt, node, config ) {
-                                location.href = "{{ url('/kriteria/nilai/tambah') }}";
-                            }
-                        },
-                        'excel', 'pdf', 'print',
-                    ]
-                });
-            
-                table.buttons().container()
-                    .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-            });
 
             $('.single-select').select2({
                 theme: 'bootstrap4',
                 width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
                 placeholder: $(this).data('placeholder'),
                 allowClear: Boolean($(this).data('allow-clear')),
+            });
+
+            $('#select_kriteria').on('change', (e) => {
+                $('#nilai-kriteria-table').on('preXhr.dt', function ( e, settings, data ) {
+                    data.id_kriteria = $('#select_kriteria').val();
+                }).DataTable().draw();
             });
         });
     </script>
