@@ -51,7 +51,7 @@
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <div class="parent-icon"><i class="bx bx-exit"></i>
                 </div>
-                {{ __('Logout') }}
+                <div class="menu-title">{{ __('Logout') }}</div>
             </a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
