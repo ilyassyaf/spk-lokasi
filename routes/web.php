@@ -40,4 +40,7 @@ Route::prefix("/alternatif")->group(function () {
     Route::get("/", [App\Http\Controllers\AlternatifController::class, 'index'])->name("alternatif");
     Route::get("/create", [App\Http\Controllers\AlternatifController::class, 'tambah'])->name("alternatif-tambah");
     Route::post("/save", [App\Http\Controllers\AlternatifController::class, 'save'])->name("alternatif-simpan");
+    Route::get("/edit/{id}", [App\Http\Controllers\AlternatifController::class, 'edit'])->name("alternatif-edit");
+    Route::post("/update/{id}", [App\Http\Controllers\AlternatifController::class, 'update'])->name("alternatif-update");
+    Route::get("/delete/{id}", [App\Http\Controllers\AlternatifController::class, 'hapus'])->name("alternatif-hapus");
 });
