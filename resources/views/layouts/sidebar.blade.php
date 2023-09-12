@@ -12,6 +12,7 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
+        @if(Auth::user()->roles == 'ADMIN')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-grid-alt"></i>
@@ -23,9 +24,10 @@
             <li> <a href="{{url("/kriteria/nilai")}}"><i class="bi bi-arrow-right-short"></i>Nilai Kriteria</a></li>
         </ul>
         </li>
+        @endif
         <li>
             <a href="{{url("/alternatif")}}">
-                <div class="parent-icon"><i class="bx bx-user"></i>
+                <div class="parent-icon"><i class="bx bx-current-location"></i>
                 </div>
                 <div class="menu-title">Alternatif</div>
             </a>
@@ -39,11 +41,21 @@
             </a>
         </li>
         </li>
+        @if(Auth::user()->roles == 'ADMIN')
+        <li>
+            <a href="{{url("/user")}}">
+                <div class="parent-icon"><i class="bx bx-user"></i>
+                </div>
+                <div class="menu-title">User</div>
+            </a>
+        </li>
+        </li>
+        @endif
         <li>
             <a href="{{url("/password")}}">
                 <div class="parent-icon"><i class="bx bx-lock"></i>
                 </div>
-                <div class="menu-title">Password</div>
+                <div class="menu-title">Ganti Password</div>
             </a>
         </li>
         </li>
