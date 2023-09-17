@@ -56,10 +56,10 @@
                         <div class="mb-2">
                             <label class="form-label">{{ $k->kode . ' - ' . $k->nama }}</label>
                             <select class="form-control single-select @error($k->kode) is-invalid @enderror" name="{{ $k->kode }}">
-                                <option @if (!old($k->kode, $select_value->id_nilai_kriteria)) selected @endif disabled>-- Pilih Nilai --</option>
+                                <option @if (!old($k->kode, $select_value->id_nilai_kriteria ?? null)) selected @endif disabled>-- Pilih Nilai --</option>
                                 @foreach ($k->nilai as $n)
-                                    <option value="{{ $n->id }}" @if (old($k->kode, $select_value->id_nilai_kriteria) == $n->id) selected @endif>
-                                        {{ $n->label }}
+                                    <option value="{{ $n->id }}" @if (old($k->kode, $select_value->id_nilai_kriteria ?? null) == $n->id) selected @endif>
+                                        {{ $n->label }} - {{ $n->nilai }}
                                     </option>
                                 @endforeach
                             </select>

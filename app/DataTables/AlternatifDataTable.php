@@ -80,8 +80,7 @@ class AlternatifDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
-            ->selectStyleSingle()
+            ->orderBy(0, 'asc')
             ->buttons([
                 Button::make('add'),
                 Button::make('excel'),

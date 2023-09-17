@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="bobot" class="col-sm-3 col-form-label">Bobot</label>
+                    <label for="bobot" class="col-sm-3 col-form-label">Bobot (%)</label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control @error('bobot') is-invalid @enderror" name="bobot" id="bobot" value="{{ old('bobot') }}">
                         @error('bobot')

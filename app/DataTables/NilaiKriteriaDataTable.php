@@ -59,7 +59,7 @@ class NilaiKriteriaDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(2, 'asc')
             ->selectStyleSingle()
             ->buttons([
                 Button::make('add'),

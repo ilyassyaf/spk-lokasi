@@ -87,7 +87,14 @@ class AlternatifController extends Controller
             $model->save();
             
             foreach ($kriteria as $k) {
-                $model->nilai()->where('id_kriteria', $k->id)->update(['id_nilai_kriteria' => $data[$k->kode]]);
+                $model->nilai()->where('id_kriteria', $k->id)->first() ?
+                $model->nilai()->where('id_kriteria', $k->id)->update([
+                    'id_nilai_kriteria' => $data[$k->kode]
+                ])
+                : $model->nilai()->create([
+                    'id_kriteria' => $k->id,
+                    'id_nilai_kriteria' => $data[$k->kode]
+                ]);
             }
             
             return redirect('alternatif');
@@ -99,6 +106,7 @@ class AlternatifController extends Controller
     public function hapus($id)
     {
         $alternatif = Alternatif::find($id);
+        $alternatif->nilai()->delete();
         $alternatif->delete();
         return redirect('alternatif');
     }
