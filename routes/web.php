@@ -57,6 +57,7 @@ Route::prefix("/alternatif")->group(function () {
     Route::post("/update/{id}", [App\Http\Controllers\AlternatifController::class, 'update'])->name("alternatif-update");
     Route::get("/delete/{id}", [App\Http\Controllers\AlternatifController::class, 'hapus'])->name("alternatif-hapus");
 });
+Route::get('/perhitungan', [App\Http\Controllers\PerhitunganController::class, 'index'])->name('perhitungan');
 
 Route::get('/password', [App\Http\Controllers\ChangePasswordController::class, 'showChangePasswordForm'])->name('show.change.password.form');
 Route::post('/password', [App\Http\Controllers\ChangePasswordController::class, 'changePassword'])->name('change.password');
