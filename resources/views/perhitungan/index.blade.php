@@ -136,7 +136,7 @@
                     <tr>
                         <th class="text-center">Kode</th>
                         <th class="text-center">Nama</th>
-                        <th class="text-center">Total</th>
+                        <th class="text-center">Total MFEP</th>
                         <th class="text-center">Rank</th>
                     </tr>
                 </thead>
